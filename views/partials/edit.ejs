@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Editar Usuario</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex items-center justify-center h-screen">
+    <div class="w-full max-w-md">
+      <h1 class="text-2xl mb-4">Editar Usuario</h1>
+      <form action="/users/update/<%= user._id %>" method="POST" class="mb-4">
+        <label for="name" class="block mb-2">Nombre:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          value="<%= user.name %>"
+          required
+          class="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
+        />
+        <label for="email" class="block mb-2">Email:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          value="<%= user.email %>"
+          required
+          class="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
+        />
+        <label for="password" class="block mb-2">Contraseña:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Dejar en blanco para mantener la misma contraseña"
+          class="border border-gray-300 rounded-md px-2 py-1 mb-2 w-full"
+        />
+        <button
+          type="submit"
+          class="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 w-full"
+        >
+          Actualizar Usuario
+        </button>
+      </form>
+      <hr class="my-4" />
+      <a href="/users" class="text-green-500">Regresar a la lista de usuarios</a>
+    </div>
+
+    <% if (errors && Object.keys(errors).length > 0) { %>
+      <div class="bg-red-500 text-white p-4 mb-4">
+        <% for (const key in errors) { %>
+          <p><%= errors[key] %></p>
+        <% } %>
+      </div>
+    <% } %>
+
+    
+  </body>
+</html>
